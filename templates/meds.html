@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Medications
+{% endblock %}
+
+{% block main %}
+    <h1>My Medications</h1>
+        <hr>
+    <form action="/meds" method="post">
+        <div class="mb-3">
+            <label for="medication">Add medication:</label>
+            <p></p>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="med" name="med" placeholder="Medicaion" type="text">
+            <p></p>
+            <input autocomplete="off"  class="form-control mx-auto w-auto" id="dose" name="dose" placeholder="Dose" type="text">
+            <p></p>
+            <input autocomplete="off"  class="form-control mx-auto w-auto" id="freq" name="freq" placeholder="Frquency" type="text">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+    </form>
+    <p></p>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Medication</th>
+            <th scope="col">Dose</th>
+            <th scope="col">Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for m in med %}
+          <tr>
+            <td>{{m["medication"]}}</td>
+            <td>{{m["dose"]}}</td>
+            <td>{{m["frequency"]}}</td>
+            <td>
+                <form action="/removemed" method="post">
+                    <input name="med" type="hidden" value="{{m.medication}}">
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

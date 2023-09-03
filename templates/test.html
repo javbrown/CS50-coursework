@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1>My Results</h1>
+        <hr>
+        <h2>Test Results</h2>
+        <form action="/test" method="post">
+            <div class="form-group row">
+                <label for="fbc" class="col-sm-2 col-form-label">Enter Full Blood Count</label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="fbc" name="fbc" placeholder="Enter Full Blood Count" type="number" min="0">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row">
+                <label for="creatinine" class="col-sm-2 col-form-label">Enter serum creatinine</label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="creatinine" name="creatinine" placeholder="Enter serum creatinine" type="number" min="0">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row">
+                <label for="egfr" class="col-sm-2 col-form-label">Enter eGFR</label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="egfr" name="egfr" placeholder="Enter eGFR" type="number" min="0">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row justify-content-start">
+                <div class="col-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+        </form>
+{% endblock %}

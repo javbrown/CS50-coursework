@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1>My Account</h1>
+        <hr>
+        <p></p>
+        <h2>My Info</h2>
+        <p>Please fill out this form at least once after registering</p>
+        <p style="color:red">Once you have filled this form in (at least once), you will be able to access the rest of the site</p>
+        <div>
+            <form action="/account" method="post">
+                <div class="form-group row">
+                    <label for="ethnicity" class="col-sm-2 col-form-label">Ethnicity</label>
+                    <div class="col-sm-10">
+                        <select id="ethnicity" name="ethnicity" class="form-control">
+                        <option selected>Choose Ethnicity</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Pakistani">Pakistani</option>
+                        <option value="Bangladeshi">Bangladeshi</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Any other Asian background">Any other Asian background</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="African">African</option>
+                        <option value="Any other Black, Black British, or Caribbean background">Any other Black, Black British, or Caribbean background</option>
+                        <option value="White and Black Caribbean">White and Black Caribbean</option>
+                        <option value="White and Black African">White and Black African</option>
+                        <option value="White and Asian">White and Asian</option>
+                        <option value="Any other Mixed or multiple ethnic background">Any other Mixed or multiple ethnic background</option>
+                        <option value="English, Welsh, Scottish, Northern Irish or British">English, Welsh, Scottish, Northern Irish or British</option>
+                        <option value="Irish">Irish</option>
+                        <option value="Gypsy or Irish Traveller">Gypsy or Irish Traveller</option>
+                        <option value="Roma">Roma</option>
+                        <option value="Any other White background">Any other White background</option>
+                        <option value="Arab">Arab</option>
+                        <option value="Any other ethnic group">Any other ethnic group</option>
+                        </select>
+                    </div>
+                  </div>
+                  <p></p>
+                <div class="form-group row">
+                  <label for="height" class="col-sm-2 col-form-label">Height in Meters</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="height" name="height" placeholder="Enter height in meters" type="number" step=".01" min="0" max="3">
+                  </div>
+                </div>
+                <p></p>
+                <div class="form-group row">
+                  <label for="weight" class="col-sm-2 col-form-label">Weight in kg</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="weight" name="weight" placeholder="Enter Weight in kg" type="number" step=".01" min="0">
+                  </div>
+                </div>
+                <p></p>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="male" value="male">
+                                <label class="form-check-label" for="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="female" value="female">
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Smoker?</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="smoker" id="yes" value="yes">
+                                <label class="form-check-label" for="yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="smoker" id="no" value="no">
+                                <label class="form-check-label" for="no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <p></p>
+                <div class="form-group row justify-content-start">
+                    <div class="col-2">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+              </form>
+        </div>
+        <p></p>
+        <hr>
+        <h2>Change Password</h2>
+        <form action="/password" method="post">
+            <div class="form-group row">
+                <label for="old_password" class="col-sm-2 col-form-label">Old Password</label>
+                <div class="col-sm-10">
+                    <input autocomplete="off" class="form-control" id="old_password" name="old_password" placeholder="Old Password" type="text">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row">
+                <label for="new_password" class="col-sm-2 col-form-label">New Password</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="new_password" name="new_password" placeholder="New Password" type="text">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row">
+                <label for="confirmation" class="col-sm-2 col-form-label">Coonfirmation</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="confirmation" name="confirmation" placeholder="Confirmation" type="text">
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group row justify-content-start">
+                <div class="col-2">
+                  <button type="submit" class="btn btn-primary">Change Password</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

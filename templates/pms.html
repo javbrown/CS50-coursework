@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Past Medical History
+{% endblock %}
+
+{% block main %}
+    <h1>My Past Medical History</h1>
+        <hr>
+    <form action="/pms" method="post">
+        <div class="mb-3">
+            <label for="medication">Add Past Medical History:</label>
+            <p></p>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="condition" name="condition" placeholder="Condition" type="text">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+    </form>
+    <p></p>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for h in history %}
+          <tr>
+            <td>{{h["condition"]}}</td>
+            <td>
+                <form action="/removepms" method="post">
+                    <input name="condition" type="hidden" value="{{h.condition}}">
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <canvas id="myChart" width="600" height="400"></canvas>
+      <script>
+        var label = [];
+        var data = [];
+        {% for d in date %}
+          var sd = {{d | tojson}};
+          label.push(sd);
+        {% endfor %}
+        {% for b in bmi %}
+          data.push({{b}});
+        {% endfor %}
+
+        new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: label,
+    datasets: [{
+      fill: false,
+      label: "My BMI",
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: data
+    }]
+  },
+  options: {
+    responsive: false
+
+  }
+});
+          </script>
+        </div>
+        <div class="col">
+          <h3>Welcome {{myusername}} to your health overview!!!</h3>
+          <hr>
+          <p></p>
+          <p>This website is designed to make it easy for you to keep track of your health conditions and medications.</p>
+          <p></p>
+          <h4> Your info:</h4>
+          <p>Your age is : {{myage}}</p>
+          <p>Your sex is : {{mysex}}</p>
+          <p>Your height is: {{myheight}} Meters</p>
+          <p>Your weight is: {{myweight}}kg</p>
+          <p>Smoker?: {{mysmoker}}</p>
+          <p>Your Creatinine Clearance is : {{crcl}}</p>
+          <p>Please note, if your Creatinine Clearance is less than 60, consult your GP and let them know. They may need to change some of your medication doses!!!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p></p>
+          <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Medication</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for m in meds %}
+                <tr>
+                  <td>{{m["medication"]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        <div class="col">
+          <p></p>
+          <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Health Conditions</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for c in conditions %}
+                <tr>
+                  <td>{{c["condition"]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
